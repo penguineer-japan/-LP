@@ -20,9 +20,9 @@ async function handleSubmit(e) {
     const form = e.target;
     const data = new FormData(form);
 
-    // Check if the form ID is still the placeholder
-    if (form.action.includes('YOUR_FORM_ID')) {
-        alert('【開発者用メッセージ】\nFormspreeのIDが設定されていません。\nindex.htmlの514行目付近にある "YOUR_FORM_ID" を、取得したIDに書き換えてください。');
+    // Check if the form action is valid (simple check)
+    if (!form.action.includes('script.google.com')) {
+        alert('フォームの設定エラー: 送信先が正しくありません。');
         return;
     }
 
