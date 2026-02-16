@@ -1416,12 +1416,12 @@ thead th:nth-child(4) {
 .table-scroll {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 40px;
+    padding-bottom: 80px;
+    /* Increased for more bottom pop */
     padding-top: 60px;
-    /* Increased top padding further to prevent clip */
     margin-top: -60px;
-    /* Compensate */
-    margin-bottom: -20px;
+    margin-bottom: -40px;
+    /* Adjust overlap */
 }
 
 /* Comparison Table Column Width Adjustment */
@@ -1448,13 +1448,10 @@ thead th:nth-child(4) {
     border-radius: 12px 12px 0 0;
     position: relative;
     top: 0;
-    /* Unified shift up */
     transform: translateY(-40px);
     padding-top: 55px;
     padding-bottom: 20px;
-    /* Pull next cell up significantly to overlap */
     margin-bottom: -50px;
-    /* Force overlap */
 }
 
 .highlight-pop-td {
@@ -1469,12 +1466,9 @@ thead th:nth-child(4) {
     position: relative;
     z-index: 10;
     box-shadow: none;
-    /* Unified shift up match header */
     transform: translateY(-40px);
-    /* Increase padding to fill any potential gap */
     padding-top: 30px;
     padding-bottom: 30px;
-    /* Pull up to connect with header/prev cell */
     margin-top: -20px;
 }
 
@@ -1483,8 +1477,8 @@ thead th:nth-child(4) {
     border-bottom: 2px solid #FF6F00 !important;
     border-radius: 0 0 12px 12px;
     transform: translateY(-40px);
-    /* Match others */
-    padding-bottom: 50px;
+    padding-bottom: 80px;
+    /* Increased significantly from 50px */
 }
 
 
