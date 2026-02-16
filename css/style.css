@@ -1957,11 +1957,11 @@ thead th {
 
     .btn-main {
         width: 100%;
-        padding: 14px 20px;
-        /* Reduced from 16px */
-        font-size: 1rem;
-        /* Reduced from 1.1rem */
-        box-shadow: 0 5px 15px rgba(230, 81, 0, 0.3);
+        padding: 12px 15px;
+        /* Further reduced from 14px 20px */
+        font-size: 0.95rem;
+        /* Further reduced from 1rem */
+        box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);
     }
 
     /* Section Titles (Too Big) */
