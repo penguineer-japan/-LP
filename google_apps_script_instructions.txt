@@ -2,7 +2,7 @@ function doPost(e) {
   // 1. スプレッドシートの取得
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   
-  // 2. フォームデータの取得（HTMLのname属性と一致させます）
+  // 2. フォームデータの取得
   var params = e.parameter;
   var date = new Date();
   var company = params.company;   // 会社名
@@ -10,9 +10,9 @@ function doPost(e) {
   var name = params.name;         // お名前
   var email = params.email;       // メールアドレス
   var issue = params.issue;       // 解決したい課題
-  var remarks = params.remarks;   // その他・ご要望（新規追加）
+  var remarks = params.remarks;   // その他・ご要望
 
-  // 課題のマッピング（英語→日本語）
+  // 課題のマッピング
   var issueMap = {
     'cost': '採用コストを下げたい',
     'entry': '応募を増やしたい',
@@ -22,19 +22,35 @@ function doPost(e) {
   var issueText = issueMap[issue] || issue;
 
   // 3. シートへの書き込み
-  // ※スプレッドシートの1行目にカラム名を追加してください：
-  // [日時, 会社名, 役職, 名前, Email, 課題, その他]
   sheet.appendRow([date, company, position, name, email, issueText, remarks]);
 
-  // 4. Larkへの通知機能 (Webhook URLを設定してください)
-  // ※Starterプラン等でWebhookが使えない場合は無視して構いません
+  // ==========================================
+  // 4. 通知機能（Lark または Chatwork）
+  // ==========================================
+  
+  // ▼ A. Larkを使う場合
+  // グループのBot設定で取得したWebhook URLを以下に入力してください
   var LARK_WEBHOOK_URL = "YOUR_LARK_WEBHOOK_URL_HERE"; 
 
-  if (LARK_WEBHOOK_URL !== "YOUR_LARK_WEBHOOK_URL_HERE") {
+  // ▼ B. Chatworkを使う場合
+  // APIトークンとルームIDを入力してください
+  var CHATWORK_API_TOKEN = ""; // 例: "abc12345..."
+  var CHATWORK_ROOM_ID = "";   // 例: "123456789" (URLの末尾の数字)
+
+
+  // --- 通知処理の実行 ---
+  
+  // LarkのURLが設定されていればLarkに送る
+  if (LARK_WEBHOOK_URL !== "YOUR_LARK_WEBHOOK_URL_HERE" && LARK_WEBHOOK_URL !== "") {
     sendLarkNotification(LARK_WEBHOOK_URL, company, position, name, email, issueText, remarks);
   }
+  
+  // Chatworkの設定があればChatworkに送る
+  if (CHATWORK_API_TOKEN !== "" && CHATWORK_ROOM_ID !== "") {
+    sendChatworkNotification(CHATWORK_API_TOKEN, CHATWORK_ROOM_ID, company, position, name, email, issueText, remarks);
+  }
 
-  // 5. 成功レスポンスを返す（JSON形式）
+  // 5. 成功レスポンスを返す
   var output = ContentService.createTextOutput(JSON.stringify({result: 'success'}));
   output.setMimeType(ContentService.MimeType.JSON);
   return output;
@@ -45,7 +61,7 @@ function sendLarkNotification(url, company, position, name, email, issue, remark
   var message = {
     "msg_type": "text",
     "content": {
-      "text": "【新規リード獲得！】\n" +
+      "text": "【新規リード獲得！(Lark)】\n" +
               "会社名: " + company + "\n" +
               "役職: " + position + "\n" +
               "名前: " + name + "\n" +
@@ -65,5 +81,28 @@ function sendLarkNotification(url, company, position, name, email, issue, remark
     UrlFetchApp.fetch(url, options);
   } catch (e) {
     Logger.log("Lark Notification Failed: " + e.toString());
+  }
+}
+
+// Chatwork通知用関数
+function sendChatworkNotification(token, roomId, company, position, name, email, issue, remarks) {
+  var body = "[info][title]新規リード獲得！(Chatwork)[/title]" +
+             "会社名: " + company + "\n" +
+             "役職: " + position + "\n" +
+             "名前: " + name + "\n" +
+             "Email: " + email + "\n" +
+             "課題: " + issue + "\n" +
+             "その他: " + (remarks || "なし") + "[/info]";
+
+  var options = {
+    "method": "post",
+    "headers": { "X-ChatWorkToken": token },
+    "payload": { "body": body }
+  };
+
+  try {
+    UrlFetchApp.fetch("https://api.chatwork.com/v2/rooms/" + roomId + "/messages", options);
+  } catch (e) {
+    Logger.log("Chatwork Notification Failed: " + e.toString());
   }
 }
