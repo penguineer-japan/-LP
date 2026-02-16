@@ -1941,11 +1941,27 @@ thead th {
         margin-bottom: 15px;
     }
 
-    /* Buttons */
+    /* Buttons: Mobile Optimization */
+    .desktop-cta {
+        display: none;
+    }
+
+    .mobile-cta-container {
+        display: block;
+        margin-top: 20px;
+        order: 3;
+        width: 100%;
+        padding: 0 10px;
+        /* Side spacing */
+    }
+
     .btn-main {
         width: 100%;
-        padding: 16px 20px;
-        font-size: 1.1rem;
+        padding: 14px 20px;
+        /* Reduced from 16px */
+        font-size: 1rem;
+        /* Reduced from 1.1rem */
+        box-shadow: 0 5px 15px rgba(230, 81, 0, 0.3);
     }
 
     /* Section Titles (Too Big) */
