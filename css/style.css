@@ -1433,8 +1433,14 @@ thead th:nth-child(4) {
     /* Reduce side padding to compress table */
 }
 
-/* Comparison Table Distortion Fix */
-/* Instead of scaleY on the whole element, use padding expansion and negative margin to preserve text aspect ratio */
+/* Marker Orange */
+.marker-orange {
+    background: linear-gradient(transparent 60%, rgba(255, 153, 2, 0.6) 60%);
+    display: inline;
+    padding-bottom: 2px;
+}
+
+/* Comparison Table Distortion Fix & Gap Removal */
 .highlight-pop-th {
     box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.15);
     z-index: 10;
@@ -1442,42 +1448,44 @@ thead th:nth-child(4) {
     color: #fff;
     border: none;
     border-radius: 12px 12px 0 0;
-    /* Remove transform scaleY to fix text distortion */
-    transform: translateY(-15px);
-    /* Just move up */
-    padding-top: 30px;
-    /* Increase physical height */
-    padding-bottom: 20px;
-    /* Ensure content is centered or looks good */
+    /* Move up visually */
     position: relative;
-    top: -5px;
-    /* Fine tune pos */
+    top: 0;
+    transform: translateY(-20px);
+    padding-top: 35px;
+    padding-bottom: 10px;
+    /* Ensure no gap below */
+    margin-bottom: -20px;
 }
 
 .highlight-pop-td {
     background: #FFF8E1;
     border-left: 2px solid #FF6F00 !important;
     border-right: 2px solid #FF6F00 !important;
+    border-top: none !important;
+    /* Ensure no top border */
+    border-bottom: none !important;
+    /* Ensure no bottom border in middle */
     color: #FF6F00;
     font-size: 1.1rem;
     font-weight: bold;
     position: relative;
     z-index: 10;
     box-shadow: none;
-    /* Remove transform scaleY */
-    transform: scale(1.05);
-    /* Uniform scale to keep aspect ratio but slightly larger */
-    transform-origin: center;
+    /* Remove transform scale, use padding */
+    transform: translateY(-20px);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: -10px;
+    /* Pull up */
 }
 
 /* Last Row Bottom Border for Oubomaru */
 .comparison-table tr:last-child .highlight-pop-td {
     border-bottom: 2px solid #FF6F00 !important;
     border-radius: 0 0 12px 12px;
-    /* Remove scaleY, use uniform scale or just padding */
-    transform: scale(1.05) translateY(5px);
-    padding-bottom: 25px;
-    /* Increase physical height at bottom */
+    transform: translateY(-20px);
+    padding-bottom: 30px;
 }
 
 
