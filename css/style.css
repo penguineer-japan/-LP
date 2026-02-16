@@ -1462,8 +1462,8 @@ thead th:nth-child(4) {
     /* Reset padding to match neighbors */
     box-shadow: none !important;
     transform: none !important;
-    font-size: 1.4rem;
-    /* Increased from inherited default (approx 1rem) */
+    font-size: 1.6rem;
+    /* Increased from 1.4rem */
     font-weight: bold;
     letter-spacing: 1px;
 }
@@ -1491,12 +1491,19 @@ thead th:nth-child(4) {
     z-index: 10;
     background: transparent !important;
     color: #FF6F00;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    /* Increased from 1.1rem */
     font-weight: bold;
     border: none !important;
     vertical-align: middle !important;
     padding: 15px 5px;
     transform: none !important;
+}
+
+.highlight-pop-td small {
+    font-size: 0.9rem;
+    /* Adjusted for balance */
+    font-weight: normal;
 }
 
 /* The Body Cell Background */
