@@ -1433,18 +1433,25 @@ thead th:nth-child(4) {
     /* Reduce side padding to compress table */
 }
 
-/* Oubomaru Column Highlight - Stronger Nyokitto */
+/* Comparison Table Distortion Fix */
+/* Instead of scaleY on the whole element, use padding expansion and negative margin to preserve text aspect ratio */
 .highlight-pop-th {
     box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.15);
-    /* Stronger shadow */
     z-index: 10;
     background: #FF6F00;
     color: #fff;
     border: none;
     border-radius: 12px 12px 0 0;
-    transform: scaleY(1.35) translateY(-15px);
-    /* Increased Scale & Lift */
-    transform-origin: bottom;
+    /* Remove transform scaleY to fix text distortion */
+    transform: translateY(-15px);
+    /* Just move up */
+    padding-top: 30px;
+    /* Increase physical height */
+    padding-bottom: 20px;
+    /* Ensure content is centered or looks good */
+    position: relative;
+    top: -5px;
+    /* Fine tune pos */
 }
 
 .highlight-pop-td {
@@ -1457,18 +1464,46 @@ thead th:nth-child(4) {
     position: relative;
     z-index: 10;
     box-shadow: none;
-    transform: scaleY(1.15);
-    /* Increased Vertical Stretch */
+    /* Remove transform scaleY */
+    transform: scale(1.05);
+    /* Uniform scale to keep aspect ratio but slightly larger */
+    transform-origin: center;
 }
 
 /* Last Row Bottom Border for Oubomaru */
 .comparison-table tr:last-child .highlight-pop-td {
     border-bottom: 2px solid #FF6F00 !important;
     border-radius: 0 0 12px 12px;
-    transform: scaleY(1.35) translateY(15px);
-    /* Increased Scale & Drop */
-    transform-origin: top;
+    /* Remove scaleY, use uniform scale or just padding */
+    transform: scale(1.05) translateY(5px);
+    padding-bottom: 25px;
+    /* Increase physical height at bottom */
 }
+
+
+/* Mobile CTA Fix - Reduce Size & Prevent Wrapping */
+@media (max-width: 768px) {
+    .mobile-cta-container .btn-main {
+        padding: 12px 20px;
+        /* Reduced padding */
+        font-size: 1rem;
+        /* Reduced font size */
+        width: 100%;
+        max-width: 320px;
+        /* Max width to contain it */
+        margin: 0 auto;
+        /* Center it */
+        white-space: nowrap;
+        /* Prevent wrapping if possible */
+    }
+
+    .mobile-cta-container .btn-sub {
+        font-size: 0.7rem;
+        /* Smaller subtext */
+        margin-top: 2px;
+    }
+}
+
 
 /* Section Scroll Arrow (Read More) - Consolidated */
 .section-scroll-arrow {
