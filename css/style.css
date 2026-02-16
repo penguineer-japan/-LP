@@ -1417,7 +1417,6 @@ thead th:nth-child(4) {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 90px;
-    /* Space for pseudo-element extension */
     padding-top: 60px;
     margin-top: -60px;
     margin-bottom: -60px;
@@ -1448,20 +1447,17 @@ thead th:nth-child(4) {
 .highlight-pop-th {
     box-shadow: none !important;
     z-index: 20;
-    /* Higher z-index to sit on top */
     background: #FF6F00;
     color: #fff;
     border: none;
     border-radius: 12px 12px 0 0;
     position: relative;
     transform: translateY(-40px);
-    padding-top: 45px;
-    /* Moderate padding */
+    padding-top: 55px;
+    /* Increased from 45px to center text */
     padding-bottom: 15px;
     margin-bottom: -40px;
-    /* Pull cells up */
     vertical-align: middle !important;
-    /* Center text in the popped box */
 }
 
 .highlight-pop-td {
@@ -1477,7 +1473,8 @@ thead th:nth-child(4) {
     z-index: 10;
     box-shadow: none;
     transform: translateY(-40px);
-    padding-top: 20px;
+    padding-top: 40px;
+    /* Increased from 20px to center text */
     padding-bottom: 20px;
     margin-top: -10px;
 }
@@ -1485,12 +1482,9 @@ thead th:nth-child(4) {
 /* Last Row Bottom Border for Oubomaru */
 .comparison-table tr:last-child .highlight-pop-td {
     border-bottom: none !important;
-    /* Remove real border */
     border-radius: 0;
-    /* Remove real radius */
     transform: translateY(-40px);
     padding-bottom: 20px;
-    /* NORMAL padding so row doesn't expand */
 }
 
 /* Pseudo-element for Bottom Protrusion (The "Monyokitto") */
@@ -1498,13 +1492,9 @@ thead th:nth-child(4) {
     content: "";
     position: absolute;
     top: 99%;
-    /* Start just overlapping bottom */
     left: -2px;
-    /* Overlap left border */
     right: -2px;
-    /* Overlap right border */
     height: 60px;
-    /* The Stick Out Amount */
     background: #FFF8E1;
     border-left: 2px solid #FF6F00;
     border-right: 2px solid #FF6F00;
