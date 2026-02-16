@@ -1442,20 +1442,24 @@ thead th:nth-child(4) {
 
 /* Comparison Table Distortion Fix & Gap Removal */
 .highlight-pop-th {
-    box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: none !important;
+    /* User requested removing shadow */
     z-index: 10;
     background: #FF6F00;
     color: #fff;
     border: none;
     border-radius: 12px 12px 0 0;
-    /* Move up visually */
+    /* Move up visually MORE */
     position: relative;
     top: 0;
-    transform: translateY(-20px);
-    padding-top: 35px;
-    padding-bottom: 10px;
+    transform: translateY(-40px);
+    /* Increased from -20px */
+    padding-top: 55px;
+    /* Increased to balance content */
+    padding-bottom: 20px;
+    /* Increased to connect with next cell */
     /* Ensure no gap below */
-    margin-bottom: -20px;
+    margin-bottom: -30px;
 }
 
 .highlight-pop-td {
@@ -1485,7 +1489,8 @@ thead th:nth-child(4) {
     border-bottom: 2px solid #FF6F00 !important;
     border-radius: 0 0 12px 12px;
     transform: translateY(-20px);
-    padding-bottom: 30px;
+    padding-bottom: 50px;
+    /* Increased from 30px */
 }
 
 
