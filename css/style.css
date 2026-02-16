@@ -1416,12 +1416,12 @@ thead th:nth-child(4) {
 .table-scroll {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 80px;
-    /* Increased for more bottom pop */
+    padding-bottom: 120px;
+    /* Extreme bottom pop */
     padding-top: 60px;
     margin-top: -60px;
-    margin-bottom: -40px;
-    /* Adjust overlap */
+    margin-bottom: -60px;
+    /* Pull next section up to compensate for huge padding */
 }
 
 /* Comparison Table Column Width Adjustment */
@@ -1477,8 +1477,8 @@ thead th:nth-child(4) {
     border-bottom: 2px solid #FF6F00 !important;
     border-radius: 0 0 12px 12px;
     transform: translateY(-40px);
-    padding-bottom: 80px;
-    /* Increased significantly from 50px */
+    padding-bottom: 120px;
+    /* Extreme protrusion */
 }
 
 
