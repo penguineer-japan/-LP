@@ -1473,16 +1473,14 @@ thead th:nth-child(4) {
     content: "";
     position: absolute;
     top: -40px;
-    /* Pop up amount */
     bottom: 0;
     left: -2px;
     right: -2px;
     background: #FF6F00;
+    border: 2px solid #FF6F00;
+    /* Added border as requested */
     border-radius: 12px 12px 0 0;
     z-index: -1;
-    /* Behind text */
-    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
-    /* Restore shadow optionally? User wanted no shadow on top. */
     box-shadow: none;
 }
 
@@ -1494,10 +1492,8 @@ thead th:nth-child(4) {
     font-size: 1.1rem;
     font-weight: bold;
     border: none !important;
-    /* Hide real borders */
     vertical-align: middle !important;
     padding: 15px 5px;
-    /* Reset padding */
     transform: none !important;
 }
 
@@ -1519,13 +1515,11 @@ thead th:nth-child(4) {
 .comparison-table tr:last-child .highlight-pop-td {
     border-bottom: none !important;
     padding-bottom: 15px;
-    /* Reset padding */
 }
 
 /* Extend background for last cell */
 .comparison-table tr:last-child .highlight-pop-td::before {
     bottom: -80px;
-    /* Pop down amount (Monyokitto) */
     border-bottom: 2px solid #FF6F00;
     border-radius: 0 0 12px 12px;
 }
@@ -1539,27 +1533,28 @@ thead th:nth-child(4) {
 /* Mobile CTA Fix - Reduce Size & Prevent Wrapping */
 @media (max-width: 768px) {
     .mobile-cta-container .btn-main {
-        padding: 12px 20px !important;
-        /* Reduced padding */
-        font-size: 1rem !important;
-        /* Reduced font size */
-        width: 100%;
-        max-width: 320px !important;
-        /* Max width to contain it */
+        padding: 10px 15px !important;
+        /* Further reduced padding */
+        font-size: 0.9rem !important;
+        /* Further reduced font size */
+        width: auto !important;
+        /* Allow auto width */
+        min-width: 200px;
+        /* Minimum width */
+        max-width: 280px !important;
+        /* Stricter max width */
         margin: 0 auto;
-        /* Center it */
         white-space: nowrap;
-        /* Prevent wrapping if possible */
+        display: block;
     }
 
     .mobile-cta-container .btn-sub {
-        font-size: 0.7rem;
-        /* Smaller subtext */
-        margin-top: 2px;
+        font-size: 0.65rem;
+        margin-top: 1px;
     }
 
     /* Override any conflicting .btn-main styles in this query */
-    /* Ensure other .btn-main don't override the mobile-cta one */
+    /* Ensure other .btn-main definitions don't bleed in */
 }
 
 
