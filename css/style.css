@@ -1951,46 +1951,6 @@ thead th {
         top: 0px;
     }
 
-    /* Scroll Arrow Mobile */
-    .scroll-down {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: rgba(255, 255, 255, 0.8);
-        animation: floatArrow 2s infinite ease-in-out;
-        z-index: 10;
-    }
-
-    .scroll-down span {
-        font-size: 0.7rem;
-        letter-spacing: 2px;
-        margin-bottom: 5px;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    .scroll-down i {
-        font-size: 1.2rem;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    @keyframes floatArrow {
-
-        0%,
-        100% {
-            transform: translate(-50%, 0);
-            opacity: 0.9;
-        }
-
-        50% {
-            transform: translate(-50%, 8px);
-            opacity: 0.5;
-        }
-    }
-
     /* Adjust Badge: Side by Side on Mobile */
     .hero-badge-wrap {
         display: flex;
@@ -2028,11 +1988,21 @@ thead th {
 
     .btn-main {
         width: 100%;
-        padding: 12px 15px;
-        /* Further reduced from 14px 20px */
-        font-size: 0.95rem;
-        /* Further reduced from 1rem */
+        padding: 10px 15px;
+        /* Further reduced */
+        font-size: 0.9rem;
+        /* Further reduced */
         box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);
+    }
+
+    /* CEO Section Mobile Fix */
+    .ceo-flex {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .ceo-text {
+        width: 100%;
     }
 
     /* Section Titles (Too Big) */
