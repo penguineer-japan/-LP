@@ -1418,7 +1418,9 @@ thead th:nth-child(4) {
     -webkit-overflow-scrolling: touch;
     padding-bottom: 90px;
     padding-top: 60px;
-    margin-top: -60px;
+    /* Space for top pop */
+    margin-top: -20px;
+    /* Reduced negative margin to leave real space for top pop (prevent title overlap) */
     margin-bottom: -60px;
 }
 
@@ -1443,71 +1445,90 @@ thead th:nth-child(4) {
     padding-bottom: 2px;
 }
 
-/* Comparison Table Distortion Fix & Gap Removal */
+/* --- Comparison Table Highlight Refactor (Pseudo-element Method) --- */
+/* This allows text to stay aligned with neighbors while background pops out */
+
 .highlight-pop-th {
-    box-shadow: none !important;
-    z-index: 20;
-    background: #FF6F00;
+    position: relative;
+    z-index: 10;
+    /* Sit above others */
+    background: transparent !important;
+    /* Transparent to let pseudo show */
     color: #fff;
     border: none;
+    vertical-align: middle !important;
+    /* Center text relative to row */
+    padding: 15px 5px;
+    /* Reset padding to match neighbors */
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* The Orange Header Background Pop */
+.highlight-pop-th::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    /* Pop up amount */
+    bottom: 0;
+    left: -2px;
+    right: -2px;
+    background: #FF6F00;
     border-radius: 12px 12px 0 0;
-    position: relative;
-    transform: translateY(-40px);
-    /* Shift up visually */
-    padding-top: 60px;
-    /* Push text down visually to center (40 offset + 20 pad) */
-    padding-bottom: 15px;
-    margin-bottom: -40px;
-    vertical-align: top !important;
-    /* Force top align to anchor padding */
+    z-index: -1;
+    /* Behind text */
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+    /* Restore shadow optionally? User wanted no shadow on top. */
+    box-shadow: none;
 }
 
 .highlight-pop-td {
-    background: #FFF8E1;
-    border-left: 2px solid #FF6F00 !important;
-    border-right: 2px solid #FF6F00 !important;
-    border-top: none !important;
-    border-bottom: none !important;
+    position: relative;
+    z-index: 10;
+    background: transparent !important;
     color: #FF6F00;
     font-size: 1.1rem;
     font-weight: bold;
-    position: relative;
-    z-index: 10;
-    box-shadow: none;
-    transform: translateY(-40px);
-    /* Shift up visually */
-    padding-top: 60px;
-    /* Push text down visually to center (40 offset + 20 pad) */
-    padding-bottom: 20px;
-    margin-top: -10px;
-    vertical-align: top !important;
-    /* Force top align */
+    border: none !important;
+    /* Hide real borders */
+    vertical-align: middle !important;
+    padding: 15px 5px;
+    /* Reset padding */
+    transform: none !important;
 }
 
-/* Last Row Bottom Border for Oubomaru */
-.comparison-table tr:last-child .highlight-pop-td {
-    border-bottom: none !important;
-    border-radius: 0;
-    transform: translateY(-40px);
-    padding-bottom: 20px;
-    vertical-align: top !important;
-}
-
-/* Pseudo-element for Bottom Protrusion (The "Monyokitto") */
-.comparison-table tr:last-child .highlight-pop-td::after {
+/* The Body Cell Background */
+.highlight-pop-td::before {
     content: "";
     position: absolute;
-    top: 99%;
+    top: 0;
+    bottom: 0;
     left: -2px;
     right: -2px;
-    height: 60px;
     background: #FFF8E1;
     border-left: 2px solid #FF6F00;
     border-right: 2px solid #FF6F00;
+    z-index: -1;
+}
+
+/* Last Row Bottom Border & Pop for Oubomaru */
+.comparison-table tr:last-child .highlight-pop-td {
+    border-bottom: none !important;
+    padding-bottom: 15px;
+    /* Reset padding */
+}
+
+/* Extend background for last cell */
+.comparison-table tr:last-child .highlight-pop-td::before {
+    bottom: -80px;
+    /* Pop down amount (Monyokitto) */
     border-bottom: 2px solid #FF6F00;
     border-radius: 0 0 12px 12px;
-    z-index: 10;
-    display: block;
+}
+
+/* Remove old pseudo element if it exists */
+.comparison-table tr:last-child .highlight-pop-td::after {
+    display: none;
 }
 
 
