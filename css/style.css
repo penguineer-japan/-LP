@@ -1477,12 +1477,11 @@ thead th:nth-child(4) {
     left: -2px;
     right: -2px;
     background: #FF6F00;
-    border: 3px solid #fff;
-    /* Changed to white to be visible */
+    border: 2px solid #FF6F00;
+    /* Reverted to orange 2px to match body width exactly */
     border-radius: 12px 12px 0 0;
     z-index: -1;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /* Add shadow for lift */
+    box-shadow: none;
 }
 
 .highlight-pop-td {
