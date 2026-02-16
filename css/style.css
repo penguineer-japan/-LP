@@ -2247,6 +2247,20 @@ thead th {
     }
 }
 
+/* Section Scroll Arrow (Read More) */
+.section-scroll-arrow {
+    text-align: center;
+    padding-bottom: 40px;
+    background: var(--white);
+    /* Match merit section bg */
+    color: var(--cta-orange);
+    font-size: 2.5rem;
+    animation: bounce 2s infinite;
+    position: relative;
+    z-index: 10;
+    margin-top: -20px;
+}
+
 /* Hide Mobile Elements on Desktop */
 @media (min-width: 769px) {
 
