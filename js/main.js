@@ -20,6 +20,17 @@ async function handleSubmit(e) {
     const form = e.target;
     const data = new FormData(form);
 
+    // Strict Email Validation
+    const email = data.get('email');
+    const freeDomains = ['gmail.com', 'yahoo.co.jp', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'softbank.ne.jp', 'docomo.ne.jp', 'ezweb.ne.jp'];
+    if (email) {
+        const domain = email.split('@')[1];
+        if (domain && freeDomains.includes(domain.toLowerCase())) {
+            alert('申し訳ございません。フリーメール（Gmail, Yahooなど）はご利用いただけません。\n法人メールアドレスをご入力ください。');
+            return; // Stop submission
+        }
+    }
+
     // Check if the form action is valid (simple check)
     if (!form.action.includes('script.google.com')) {
         alert('フォームの設定エラー: 送信先が正しくありません。');

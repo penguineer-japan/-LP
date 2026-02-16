@@ -9,7 +9,8 @@ function doPost(e) {
   var position = params.position; // 役職
   var name = params.name;         // お名前
   var email = params.email;       // メールアドレス
-  var issue = params.issue;       // 解決したい課題 (value値: cost, entry, quality, time)
+  var issue = params.issue;       // 解決したい課題
+  var remarks = params.remarks;   // その他・ご要望（新規追加）
 
   // 課題のマッピング（英語→日本語）
   var issueMap = {
@@ -21,13 +22,16 @@ function doPost(e) {
   var issueText = issueMap[issue] || issue;
 
   // 3. シートへの書き込み
-  sheet.appendRow([date, company, position, name, email, issueText]);
+  // ※スプレッドシートの1行目にカラム名を追加してください：
+  // [日時, 会社名, 役職, 名前, Email, 課題, その他]
+  sheet.appendRow([date, company, position, name, email, issueText, remarks]);
 
   // 4. Larkへの通知機能 (Webhook URLを設定してください)
-  var LARK_WEBHOOK_URL = "YOUR_LARK_WEBHOOK_URL_HERE"; // ←ここにLarkのWebhook URLを貼り付け
+  // ※Starterプラン等でWebhookが使えない場合は無視して構いません
+  var LARK_WEBHOOK_URL = "YOUR_LARK_WEBHOOK_URL_HERE"; 
 
   if (LARK_WEBHOOK_URL !== "YOUR_LARK_WEBHOOK_URL_HERE") {
-    sendLarkNotification(LARK_WEBHOOK_URL, company, position, name, email, issueText);
+    sendLarkNotification(LARK_WEBHOOK_URL, company, position, name, email, issueText, remarks);
   }
 
   // 5. 成功レスポンスを返す（JSON形式）
@@ -37,7 +41,7 @@ function doPost(e) {
 }
 
 // Lark通知用関数
-function sendLarkNotification(url, company, position, name, email, issue) {
+function sendLarkNotification(url, company, position, name, email, issue, remarks) {
   var message = {
     "msg_type": "text",
     "content": {
@@ -46,7 +50,8 @@ function sendLarkNotification(url, company, position, name, email, issue) {
               "役職: " + position + "\n" +
               "名前: " + name + "\n" +
               "Email: " + email + "\n" +
-              "課題: " + issue
+              "課題: " + issue + "\n" +
+              "その他: " + (remarks || "なし")
     }
   };
 
