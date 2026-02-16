@@ -1952,13 +1952,25 @@ thead th {
         top: 0px;
     }
 
-    /* Adjust Badge */
+    /* Adjust Badge: Side by Side on Mobile */
     .hero-badge-wrap {
         display: flex;
-        flex-direction: column;
+        flex-direction: row !important;
+        /* Force Horizontal */
+        justify-content: center;
         align-items: center;
         gap: 8px;
         margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .hero-badge {
+        font-size: 0.8rem;
+        white-space: nowrap;
+        margin: 0;
+        /* Reset margin */
+        padding: 6px 12px;
+        /* Adjust padding for side-by-side */
     }
 
     /* Buttons: Mobile Optimization */
