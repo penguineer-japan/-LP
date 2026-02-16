@@ -1307,8 +1307,8 @@ h3 {
 }
 
 /* Targeted Header Fix for 'Jinzai Shokai' & 'Media' */
-thead th:nth-child(2),
-thead th:nth-child(3) {
+thead th:nth-child(3),
+thead th:nth-child(4) {
     background: #fdfdfd;
     color: var(--text-dark);
     font-weight: normal;
@@ -1319,14 +1319,17 @@ thead th:nth-child(3) {
     /* Standard Width */
 }
 
-/* Oubomaru Column Highlight (Clean Solid Style) */
+/* Oubomaru Column Highlight - Nyokitto (Scale Up) */
 .highlight-pop-th {
-    box-shadow: none;
-    z-index: 1;
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+    z-index: 10;
     background: #FF6F00;
     color: #fff;
     border: none;
-    border-radius: 8px 8px 0 0;
+    border-radius: 12px 12px 0 0;
+    transform: scaleY(1.15) translateY(-5px);
+    /* Vertical Scale + Move Up */
+    transform-origin: bottom;
 }
 
 .highlight-pop-td {
@@ -1338,14 +1341,19 @@ thead th:nth-child(3) {
     font-size: 1.1rem;
     font-weight: bold;
     position: relative;
-    z-index: 1;
+    z-index: 10;
     box-shadow: none;
+    transform: scaleY(1.05);
+    /* Slight vertical stretch */
 }
 
 /* Last Row Bottom Border for Oubomaru */
 .comparison-table tr:last-child .highlight-pop-td {
     border-bottom: 2px solid #FF6F00 !important;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 12px 12px;
+    transform: scaleY(1.15) translateY(5px);
+    /* Vertical Scale + Move Down */
+    transform-origin: top;
 }
 
 /* Remove pop-label since we deleted HTML */
@@ -1359,19 +1367,34 @@ thead th:nth-child(3) {
     font-weight: 900;
 }
 
-/* Merit Revert (Standard H3/P) */
-/* Reset any simple classes if stuck in HTML cache, though HTML is reverted */
-.merit-text h3 {
-    font-size: 1.3rem;
+/* Merit Update */
+.merit-title-update {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--theme-deep);
+    line-height: 1.4;
+    font-weight: 800;
 }
 
-.merit-text p {
-    font-size: 0.95rem;
+.merit-desc-update {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
 }
 
-/* Flow Catchphrase */
+/* Flow Catchphrase Strong */
 .flow-catch {
     margin: -10px 0 40px;
+}
+
+.strong-catch {
+    font-size: 1.5rem !important;
+    padding: 5px 15px !important;
+    background: #FFEB3B !important;
+    /* Brighter Yellow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #d35400;
 }
 
 .marker-yellow {
