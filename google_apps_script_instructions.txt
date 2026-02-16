@@ -1,0 +1,101 @@
+# Googleスプレッドシート連携 ＆ Lark通知の設定手順
+
+この手順に従って、フォームの送信内容を「Googleスプレッドシートに保存」し、同時に「Larkに通知」する設定を行ってください。
+
+## 手順1: Googleスプレッドシートの準備
+1. 新規のGoogleスプレッドシートを作成します。
+2. シート名を「Sheet1」（デフォルトのまま）にしておきます。
+3. 1行目にヘッダーを作成します：
+   - A1: `timestamp`
+   - B1: `company`
+   - C1: `position`
+   - D1: `name`
+   - E1: `email`
+   - F1: `issue`
+
+## 手順2: Lark Webhook URLの取得
+1. Larkのデスクトップアプリまたはブラウザ版を開きます。
+2. 通知を受け取りたいグループチャットを開きます（なければ作成してください）。
+3. チャット設定（右上の「...」など）から **[Bot] > [Botを追加]** を選択します。
+4. **[Custom Bot]** (カスタムロボット) を選択して追加します。
+5. Botの名前（例: 「おうぼ丸通知」）を付けます。
+6. 発行された **Webhook URL** （ `https://open.larksuite.com/open-apis/bot/v2/hook/...` ）をコピーして控えておきます。
+
+## 手順3: Google Apps Script (GAS) の作成
+1. スプレッドシートのメニューから **[拡張機能] > [Apps Script]** をクリックします。
+2. コードエディタに以下のコードを貼り付けます（元のコードはすべて消してください）。
+3. **★重要**: コード内の `'YOUR_LARK_WEBHOOK_URL'` という部分を、手順2でコピーしたURLに書き換えてください。
+
+```javascript
+// ★ここにLarkのWebhook URLを貼り付けてください
+const LARK_WEBHOOK_URL = 'YOUR_LARK_WEBHOOK_URL';
+
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1');
+  var params = e.parameter;
+  var date = new Date();
+  
+  // 1. スプレッドシートに保存
+  sheet.appendRow([
+    date,
+    params.company,
+    params.position,
+    params.name,
+    params.email,
+    params.issue
+  ]);
+  
+  // 2. Larkに通知
+  sendToLark(params);
+  
+  // 3. 成功レスポンス
+  var output = ContentService.createTextOutput(JSON.stringify({result: 'success'}));
+  output.setMimeType(ContentService.MimeType.JSON);
+  return output;
+}
+
+function sendToLark(params) {
+  if (!LARK_WEBHOOK_URL || LARK_WEBHOOK_URL.includes('YOUR_LARK_WEBHOOK_URL')) {
+    return; // URLが設定されていない場合はスキップ
+  }
+
+  var message = {
+    "msg_type": "text",
+    "content": {
+      "text": "【おうぼ丸】新しい問い合わせがありました！\n\n" +
+              "社名: " + params.company + "\n" +
+              "役職: " + params.position + "\n" +
+              "氏名: " + params.name + "\n" +
+              "Email: " + params.email + "\n" +
+              "課題: " + params.issue
+    }
+  };
+
+  var options = {
+    "method": "post",
+    "contentType": "application/json",
+    "payload": JSON.stringify(message)
+  };
+
+  try {
+    UrlFetchApp.fetch(LARK_WEBHOOK_URL, options);
+  } catch (e) {
+    console.log("Lark notification failed: " + e.toString());
+  }
+}
+```
+
+4. `Ctrl + S` (Macは `Cmd + S`) で保存します。
+
+## 手順4: デプロイ（Webアプリとして公開）
+1. 右上の **[デプロイ] > [新しいデプロイ]** をクリック。
+2. 歯車アイコン > **[ウェブアプリ]**。
+3. 設定：
+   - **次のユーザーとして実行**: **自分** (Me)
+   - **アクセスできるユーザー**: **全員** (Anyone)  ← **★重要**
+4. **[デプロイ]** ボタンをクリック。
+5. 「アクセスを承認」→ [詳細] → [（プロジェクト名）に移動] → [許可]。
+6. 表示されたURLをコピー。
+
+## 手順5: HTMLへの反映
+1. コピーしたURLを `index.html` のフォームアクションに設定してください。

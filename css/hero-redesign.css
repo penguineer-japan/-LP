@@ -1,0 +1,153 @@
+/* --- New Hero Visual Redesign --- */
+
+.hero-visual {
+    position: relative;
+    /* Ensure stacking context */
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* White Circle Background */
+.hero-circle-bg {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+    z-index: 1;
+}
+
+/* Penguin Image */
+.hero-penguin {
+    position: relative;
+    z-index: 5;
+    width: 280px;
+    /* Adjust based on actual image ratio */
+    height: auto;
+    margin-top: 40px;
+    /* Push slightly down to center visually */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+/* Calendar Card */
+.hero-calendar {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    /* Adjust horizontal position */
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px;
+    width: 140px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 6;
+    transform: rotate(-8deg);
+    border: 1px solid #eee;
+}
+
+.cal-header {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--theme-main);
+    text-align: center;
+    line-height: 1.3;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: 8px;
+}
+
+.cal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cal-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+}
+
+.cal-row span {
+    background: #f1f5f9;
+    border-radius: 3px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cal-row span.booked {
+    background: #FF9800;
+    /* Orange */
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    /* Vertical text for small space */
+    text-orientation: upright;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+/* Growth Arrow */
+.hero-growth-arrow {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    z-index: 4;
+    font-size: 4rem;
+    color: #FF9800;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+    transform: rotate(10deg);
+}
+
+/* Check Badge */
+.hero-check-badge {
+    position: absolute;
+    bottom: 80px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background: #FF9800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+    z-index: 6;
+    border: 4px solid #fff;
+}
+
+/* Floating Animations */
+.card-float {
+    animation: float-slow 4s ease-in-out infinite;
+}
+
+.float-delay {
+    animation: float-slow 4s ease-in-out infinite 1s;
+}
+
+.bounce-delay {
+    animation: bounce 2s infinite 0.5s;
+}
+
+@keyframes float-slow {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(-8deg);
+    }
+}
