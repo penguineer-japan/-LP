@@ -1382,51 +1382,106 @@ thead th:nth-child(4) {
     color: #555;
 }
 
-/* Flow Catchphrase Strong */
+/* Flow Catchphrase Strong - REVERTED to Simple Text with Vertical Float */
 .flow-catch {
     margin: -10px 0 40px;
 }
 
 .strong-catch {
-    font-size: 1.5rem !important;
-    padding: 5px 15px !important;
-    background: #FFEB3B !important;
-    /* Brighter Yellow */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    color: #d35400;
+    font-size: 1.8rem !important;
+    font-weight: 900;
+    color: #ff9902;
+    /* CTA Orange */
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
     display: inline-block;
-    /* Required for transform */
-    animation: float 3s ease-in-out infinite;
-    /* Fuwafuwa animation */
+    animation: float-vertical 2s ease-in-out infinite;
 }
 
-/* Comparison Scroll Container - Add padding to prevent clipping of Nyokitto */
+/* Vertical Float Animation (No Rotation) */
+@keyframes float-vertical {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Comparison Scroll Container */
 .table-scroll {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 20px;
-    padding-top: 20px;
-    /* Add top padding for header pop-out */
-    margin-top: -20px;
-    /* Compensate for top padding */
+    padding-top: 30px;
+    /* Increased top padding for stronger pop */
+    margin-top: -30px;
 }
 
-/* Section Scroll Arrow (Read More) */
+/* Comparison Table Column Width Adjustment */
+.comparison-table th,
+.comparison-table td {
+    min-width: auto;
+    /* Reset min-width if any */
+    padding: 15px 5px;
+    /* Reduce side padding to compress table */
+}
+
+/* Oubomaru Column Highlight - Stronger Nyokitto */
+.highlight-pop-th {
+    box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.15);
+    /* Stronger shadow */
+    z-index: 10;
+    background: #FF6F00;
+    color: #fff;
+    border: none;
+    border-radius: 12px 12px 0 0;
+    transform: scaleY(1.25) translateY(-10px);
+    /* Increased Scale & Lift */
+    transform-origin: bottom;
+}
+
+.highlight-pop-td {
+    background: #FFF8E1;
+    border-left: 2px solid #FF6F00 !important;
+    border-right: 2px solid #FF6F00 !important;
+    color: #FF6F00;
+    font-size: 1.1rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 10;
+    box-shadow: none;
+    transform: scaleY(1.1);
+    /* Increased Vertical Stretch */
+}
+
+/* Last Row Bottom Border for Oubomaru */
+.comparison-table tr:last-child .highlight-pop-td {
+    border-bottom: 2px solid #FF6F00 !important;
+    border-radius: 0 0 12px 12px;
+    transform: scaleY(1.25) translateY(10px);
+    /* Increased Scale & Drop */
+    transform-origin: top;
+}
+
+/* Section Scroll Arrow (Read More) - Consolidated */
 .section-scroll-arrow {
     text-align: center;
     padding-bottom: 40px;
     background: transparent;
-    /* Remove white background */
     color: var(--cta-orange);
-    font-size: 4rem;
-    /* Larger size */
+    font-size: 6rem;
+    /* Maximized Size */
     animation: bounce 2s infinite;
     position: relative;
     z-index: 10;
     margin-top: -20px;
-    text-shadow: 0 2px 5px rgba(255, 255, 255, 0.8);
-    /* Add text shadow for visibility */
+    text-shadow: none;
+    /* Remove shadow/layers */
 }
 
 thead th {
@@ -2271,19 +2326,7 @@ thead th {
     }
 }
 
-/* Section Scroll Arrow (Read More) - Consolidated */
-.section-scroll-arrow {
-    text-align: center;
-    padding-bottom: 40px;
-    background: transparent;
-    color: var(--cta-orange);
-    font-size: 4rem;
-    animation: bounce 2s infinite;
-    position: relative;
-    z-index: 10;
-    margin-top: -20px;
-    text-shadow: 0 2px 5px rgba(255, 255, 255, 0.8);
-}
+
 
 /* Hide Mobile Elements on Desktop */
 @media (min-width: 769px) {
