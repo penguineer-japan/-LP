@@ -2100,8 +2100,30 @@ thead th {
         font-size: 1.5rem;
     }
 
+    /* Problem Section Image Swap */
+    .desktop-only-img {
+        display: none;
+    }
+
+    .problem-img-mobile {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto 30px;
+        /* Spacing below image */
+    }
+
     .check-card {
         padding: 12px;
         font-size: 0.9rem;
+    }
+}
+
+/* Hide Mobile Elements on Desktop */
+@media (min-width: 769px) {
+
+    .mobile-cta-container,
+    .problem-img-mobile {
+        display: none !important;
     }
 }
