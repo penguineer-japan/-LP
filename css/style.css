@@ -1267,51 +1267,71 @@ h3 {
     /* Standard border for all */
 }
 
-/* Column 1: Labels (20%) */
+/* Column 1: Labels (15%) */
 .comparison-table th:nth-child(1),
 .comparison-table td:nth-child(1) {
-    width: 20%;
-    text-align: left;
+    width: 15%;
+    /* Reduced from 20% */
+    text-align: center;
+    /* Centered like image */
     background: #f8fafc;
     font-weight: bold;
     color: var(--theme-deep);
 }
 
-/* Column 2: Jinzai (40%) */
+/* Column 2: Jinzai (25%) */
 .comparison-table th:nth-child(2),
 .comparison-table td:nth-child(2) {
-    width: 40%;
+    width: 25%;
+    /* Reduced from 40% */
     border-left: 2px solid #e2e8f0;
-    /* Outer Frame */
+    border-right: 1px solid #e2e8f0;
+}
+
+/* Column 3: Media (25%) */
+.comparison-table th:nth-child(3),
+.comparison-table td:nth-child(3) {
+    width: 25%;
     border-right: 2px solid #e2e8f0;
-    /* Outer Frame */
 }
 
 /* Header Specifics */
 .highlight-th {
-    background: var(--theme-main);
+    background: var(--cta-orange);
+    /* Changed to Orange per image */
     color: var(--white);
     border-radius: 10px 10px 0 0;
     border: none;
+    width: 35%;
+    /* Column 4 explicit width if needed, or rely on table-layout:fixed remainder */
 }
 
-/* Targeted Header Fix for 'Jinzai Shokai' */
-thead th:nth-child(2) {
-    background: #f1f5f9;
+/* Targeted Header Fix for 'Jinzai Shokai' & 'Media' */
+thead th:nth-child(2),
+thead th:nth-child(3) {
+    background: #fff;
+    /* White background per image */
     color: var(--text-dark);
-    border: 2px solid #e2e8f0;
-    border-bottom: none;
-    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+    border-bottom: 2px solid #e2e8f0;
     padding: 20px;
 }
 
 /* Oubomaru Column Highlight */
 .highlight-td {
-    background: #E0F2F1;
+    background: #fff9f0;
+    /* Light orange bg */
     font-weight: bold;
     color: var(--theme-deep);
-    border-bottom: 1px solid #B2DFDB;
-    /* Add borders to Oubomaru column too if needed, but per request focusing on Jinzai frame */
+    border-bottom: 1px solid #ffebb0;
+    border-left: 2px solid var(--cta-orange);
+    border-right: 2px solid var(--cta-orange);
+}
+
+/* Last Row Bottom Border for Oubomaru */
+.comparison-table tr:last-child .highlight-td {
+    border-bottom: 2px solid var(--cta-orange);
+    border-radius: 0 0 10px 10px;
 }
 
 .price-cell {
