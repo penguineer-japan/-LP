@@ -1453,11 +1453,13 @@ thead th:nth-child(4) {
     border-radius: 12px 12px 0 0;
     position: relative;
     transform: translateY(-40px);
-    padding-top: 55px;
-    /* Increased from 45px to center text */
+    /* Shift up visually */
+    padding-top: 60px;
+    /* Push text down visually to center (40 offset + 20 pad) */
     padding-bottom: 15px;
     margin-bottom: -40px;
-    vertical-align: middle !important;
+    vertical-align: top !important;
+    /* Force top align to anchor padding */
 }
 
 .highlight-pop-td {
@@ -1473,10 +1475,13 @@ thead th:nth-child(4) {
     z-index: 10;
     box-shadow: none;
     transform: translateY(-40px);
-    padding-top: 40px;
-    /* Increased from 20px to center text */
+    /* Shift up visually */
+    padding-top: 60px;
+    /* Push text down visually to center (40 offset + 20 pad) */
     padding-bottom: 20px;
     margin-top: -10px;
+    vertical-align: top !important;
+    /* Force top align */
 }
 
 /* Last Row Bottom Border for Oubomaru */
@@ -1485,6 +1490,7 @@ thead th:nth-child(4) {
     border-radius: 0;
     transform: translateY(-40px);
     padding-bottom: 20px;
+    vertical-align: top !important;
 }
 
 /* Pseudo-element for Bottom Protrusion (The "Monyokitto") */
