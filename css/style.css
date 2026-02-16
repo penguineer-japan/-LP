@@ -1861,3 +1861,134 @@ thead th {
     transform: rotate(-5deg) scale(0.9);
     /* Slightly smaller */
 }
+
+/* --- Mobile Responsive Fixes (Added Post-Deployment) --- */
+@media (max-width: 768px) {
+
+    /* Hero Section */
+    .hero {
+        padding: 40px 0 60px;
+        clip-path: polygon(0 0, 100% 0, 100% 98%, 0 100%);
+        /* Gentler slope */
+    }
+
+    .hero-flex {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .hero-text {
+        order: 1;
+        /* Text first */
+    }
+
+    .hero-visual {
+        order: 2;
+        /* Visual second */
+        width: 100%;
+        height: 300px;
+        /* Reduce height */
+        justify-content: center;
+        /* Center content */
+        margin-top: 20px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        /* Smaller title */
+    }
+
+    .hero-calendar {
+        left: 50%;
+        transform: translateX(-140%) rotate(-5deg) scale(0.8);
+        /* Center-ish adjustment */
+        top: 20px;
+    }
+
+    .hero-growth-arrow {
+        right: 10px;
+        top: 10px;
+    }
+
+    /* Adjust Badge */
+    .hero-badge-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        text-align: center;
+        /* Ensure centering */
+    }
+
+    .hero-badge {
+        margin: 0;
+    }
+
+    /* Buttons */
+    .btn-main {
+        width: 100%;
+        /* Full width button */
+        padding: 18px 20px;
+        font-size: 1.2rem;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+        gap: 40px;
+    }
+
+    .price-card {
+        margin-bottom: 20px;
+    }
+
+    /* Case Study */
+    .case-grid {
+        grid-template-columns: 1fr;
+        /* Single column */
+        gap: 20px;
+    }
+
+    .case-card {
+        margin-bottom: 0;
+    }
+
+    /* Flow */
+    .flow-list {
+        flex-direction: column;
+        padding-left: 20px;
+        /* Reduce padding */
+    }
+
+    .flow-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Impact Header */
+    .impact-header-content {
+        font-size: 0.9rem;
+    }
+
+    .impact-main {
+        font-size: 1.8rem;
+    }
+
+    .merit-num {
+        font-size: 6rem;
+        /* Smaller background number */
+        top: -30px;
+    }
+
+    /* Footer / CEO */
+    .ceo-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ceo-img img {
+        width: 180px;
+        height: 180px;
+    }
+}

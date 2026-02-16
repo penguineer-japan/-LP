@@ -40,7 +40,7 @@
     <!-- Header -->
     <header class="header">
         <div class="container header-inner">
-            <a href="#" class="logo">
+            <a href="https://penguineer.studio.site/" target="_blank" class="logo">
                 <img src="images/img_2213_2.png" alt="Logo">
                 <span>ペンギニア株式会社</span>
             </a>
@@ -72,7 +72,7 @@
             <div class="hero-visual">
                 <div class="hero-circle-bg"></div>
                 <!-- Calendar (Left Top) -->
-                <div class="calendar-card hero-calendar">
+                <div class="calendar-card hero-calendar float-anim">
                     <div class="cal-head">
                         20XX年◯月<br>面接予定
                     </div>
@@ -386,7 +386,7 @@
                     <img src="images/case_office_jp.png" alt="IT事例"
                         style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
                     <div class="case-badge">IT企業</div>
-                    <h3>採用業務が激減し、<br>採用力向上へ時間を使えるように</h3>
+                    <h3>採用業務が激減し、採用力向上へ時間を使えるように</h3>
                     <div class="case-metric">
                         <span class="label">採用単価</span>
                         <span class="val down">120万円 → 20万円</span>
@@ -578,7 +578,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container text-center">
-            <p class="company-name">ペンギニア株式会社</p>
+            <p class="company-name"><a href="https://penguineer.studio.site/" target="_blank"
+                    style="color: inherit; text-decoration: none;">ペンギニア株式会社</a></p>
             <p>東京都渋谷区渋谷2-19-15 宮益坂ビルディング609</p>
             <p class="copyright">&copy; 2024 PENGUINEER Inc. All Rights Reserved.</p>
         </div>
@@ -587,24 +588,7 @@
     <script src="js/main.js"></script>
     <script>
         // Inline script for immediate interaction logic (Move to js/main.js if preferred later)
-        function openForm() {
-            document.getElementById('formOverlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeForm() {
-            document.getElementById('formOverlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        function handleSubmit(e) {
-            e.preventDefault();
-            alert('お申し込みありがとうございます！\nシミュレーション資料を送付いたします。');
-            closeForm();
-        }
-        window.onclick = function (event) {
-            if (event.target == document.getElementById('formOverlay')) {
-                closeForm();
-            }
-        }
+        // Removed conflicting function definitions to let main.js handle logic
     </script>
 </body>
 
