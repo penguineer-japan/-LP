@@ -1462,6 +1462,10 @@ thead th:nth-child(4) {
     /* Reset padding to match neighbors */
     box-shadow: none !important;
     transform: none !important;
+    font-size: 1.4rem;
+    /* Increased from inherited default (approx 1rem) */
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 /* The Orange Header Background Pop */
@@ -1535,12 +1539,12 @@ thead th:nth-child(4) {
 /* Mobile CTA Fix - Reduce Size & Prevent Wrapping */
 @media (max-width: 768px) {
     .mobile-cta-container .btn-main {
-        padding: 12px 20px;
+        padding: 12px 20px !important;
         /* Reduced padding */
-        font-size: 1rem;
+        font-size: 1rem !important;
         /* Reduced font size */
         width: 100%;
-        max-width: 320px;
+        max-width: 320px !important;
         /* Max width to contain it */
         margin: 0 auto;
         /* Center it */
@@ -1553,6 +1557,9 @@ thead th:nth-child(4) {
         /* Smaller subtext */
         margin-top: 2px;
     }
+
+    /* Override any conflicting .btn-main styles in this query */
+    /* Ensure other .btn-main don't override the mobile-cta one */
 }
 
 
