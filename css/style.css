@@ -1863,13 +1863,36 @@ thead th {
 }
 
 /* --- Mobile Responsive Fixes (Added Post-Deployment) --- */
+/* --- Mobile Responsive Fixes (Added Post-Deployment) --- */
 @media (max-width: 768px) {
+
+    /* Header Optimization */
+    .header {
+        padding: 8px 0;
+    }
+
+    .logo img {
+        height: 30px;
+    }
+
+    .logo span {
+        font-size: 0.9rem;
+    }
+
+    .header .btn-mini {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    /* Container: Ensure enough breathing room but not too much */
+    .container {
+        padding: 0 20px;
+    }
 
     /* Hero Section */
     .hero {
         padding: 40px 0 60px;
         clip-path: polygon(0 0, 100% 0, 100% 98%, 0 100%);
-        /* Gentler slope */
     }
 
     .hero-flex {
@@ -1880,34 +1903,33 @@ thead th {
 
     .hero-text {
         order: 1;
-        /* Text first */
     }
 
     .hero-visual {
         order: 2;
-        /* Visual second */
         width: 100%;
         height: 300px;
-        /* Reduce height */
-        justify-content: center;
-        /* Center content */
         margin-top: 20px;
+        justify-content: center;
     }
 
+    /* Fix Title Size (Too Big -> Hard to read) */
     .hero-title {
-        font-size: 2rem;
-        /* Smaller title */
+        font-size: 1.7rem;
+        /* Reduced from 2rem */
+        line-height: 1.4;
     }
 
     .hero-calendar {
-        left: 10px;
-        transform: rotate(-5deg) scale(0.7);
-        top: -10px;
+        left: 5px;
+        transform: rotate(-5deg) scale(0.65);
+        top: -20px;
+        /* Move further out of way */
     }
 
     .hero-growth-arrow {
-        right: 10px;
-        top: 10px;
+        right: 5px;
+        top: 0px;
     }
 
     /* Adjust Badge */
@@ -1915,49 +1937,111 @@ thead th {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         margin-bottom: 15px;
-        text-align: center;
-        /* Ensure centering */
-    }
-
-    .hero-badge {
-        margin: 0;
     }
 
     /* Buttons */
     .btn-main {
         width: 100%;
-        /* Full width button */
-        padding: 18px 20px;
-        font-size: 1.2rem;
+        padding: 16px 20px;
+        font-size: 1.1rem;
     }
 
-    /* Pricing */
+    /* Section Titles (Too Big) */
+    .section-title {
+        font-size: 1.5rem;
+        /* Reduced from 1.6rem/2.2rem */
+        margin-bottom: 30px;
+    }
+
+    /* Pricing (Whitespace too big) */
     .pricing-grid {
-        gap: 40px;
+        gap: 30px;
     }
 
     .price-card {
         margin-bottom: 20px;
     }
 
-    /* Case Study */
+    .price-header {
+        padding: 15px;
+        /* Reduced from 25px */
+    }
+
+    .price-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .price-body {
+        padding: 20px;
+        /* Reduced from 40px - Fix whitespace */
+    }
+
+    .price-amount {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .price-amount .amount {
+        font-size: 3.5rem;
+        /* Reduced from 5rem */
+    }
+
+    .price-features {
+        padding: 0 10px;
+    }
+
+    .price-features li {
+        font-size: 0.95rem;
+    }
+
+    /* Case Study (Card Padding) */
     .case-grid {
         grid-template-columns: 1fr;
-        /* Single column */
         gap: 20px;
     }
 
     .case-card {
+        padding: 20px;
+        /* Reduced from 30px */
         margin-bottom: 0;
+    }
+
+    .case-card img {
+        height: 150px;
+    }
+
+    /* Common Support Box */
+    .common-support-box {
+        padding: 20px;
+        /* Reduced from 30px */
+        width: 100% !important;
+    }
+
+    .common-support-list {
+        padding-left: 0;
     }
 
     /* Flow */
     .flow-list {
         flex-direction: column;
-        padding-left: 20px;
-        /* Reduce padding */
+        padding-left: 15px;
+    }
+
+    .flow-content {
+        padding: 15px 20px;
+        /* Reduced padding */
+        gap: 15px;
+    }
+
+    .flow-step-circle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .flow-step-circle strong {
+        font-size: 1.1rem;
     }
 
     .flow-item {
@@ -1966,18 +2050,22 @@ thead th {
     }
 
     /* Impact Header */
-    .impact-header-content {
-        font-size: 0.9rem;
+    .impact-header-container {
+        padding: 30px 15px;
     }
 
     .impact-main {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        /* Reduced from 2.2rem */
     }
 
     .merit-num {
-        font-size: 6rem;
-        /* Smaller background number */
-        top: -30px;
+        font-size: 5rem;
+        top: -20px;
+    }
+
+    .merit-text h3 {
+        font-size: 1.4rem;
     }
 
     /* Footer / CEO */
@@ -1987,7 +2075,17 @@ thead th {
     }
 
     .ceo-img img {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
+    }
+
+    /* Problem Section */
+    .problem-text .section-title {
+        font-size: 1.5rem;
+    }
+
+    .check-card {
+        padding: 12px;
+        font-size: 0.9rem;
     }
 }
