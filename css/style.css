@@ -1395,14 +1395,38 @@ thead th:nth-child(4) {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     color: #d35400;
+    display: inline-block;
+    /* Required for transform */
+    animation: float 3s ease-in-out infinite;
+    /* Fuwafuwa animation */
 }
 
-.marker-yellow {
-    background: linear-gradient(transparent 60%, #fff176 60%);
-    font-weight: bold;
-    font-size: 1.3rem;
-    padding: 0 8px;
-    color: var(--theme-deep);
+/* Comparison Scroll Container - Add padding to prevent clipping of Nyokitto */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    /* Add top padding for header pop-out */
+    margin-top: -20px;
+    /* Compensate for top padding */
+}
+
+/* Section Scroll Arrow (Read More) */
+.section-scroll-arrow {
+    text-align: center;
+    padding-bottom: 40px;
+    background: transparent;
+    /* Remove white background */
+    color: var(--cta-orange);
+    font-size: 4rem;
+    /* Larger size */
+    animation: bounce 2s infinite;
+    position: relative;
+    z-index: 10;
+    margin-top: -20px;
+    text-shadow: 0 2px 5px rgba(255, 255, 255, 0.8);
+    /* Add text shadow for visibility */
 }
 
 thead th {
@@ -2247,18 +2271,18 @@ thead th {
     }
 }
 
-/* Section Scroll Arrow (Read More) */
+/* Section Scroll Arrow (Read More) - Consolidated */
 .section-scroll-arrow {
     text-align: center;
     padding-bottom: 40px;
-    background: var(--white);
-    /* Match merit section bg */
+    background: transparent;
     color: var(--cta-orange);
-    font-size: 2.5rem;
+    font-size: 4rem;
     animation: bounce 2s infinite;
     position: relative;
     z-index: 10;
     margin-top: -20px;
+    text-shadow: 0 2px 5px rgba(255, 255, 255, 0.8);
 }
 
 /* Hide Mobile Elements on Desktop */
