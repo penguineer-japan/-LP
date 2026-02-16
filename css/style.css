@@ -1417,20 +1417,18 @@ thead th:nth-child(4) {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 40px;
-    padding-top: 40px;
-    /* Increased top padding for stronger pop */
-    margin-top: -40px;
+    padding-top: 60px;
+    /* Increased top padding further to prevent clip */
+    margin-top: -60px;
+    /* Compensate */
     margin-bottom: -20px;
-    /* Allow overlap */
 }
 
 /* Comparison Table Column Width Adjustment */
 .comparison-table th,
 .comparison-table td {
     min-width: auto;
-    /* Reset min-width if any */
     padding: 15px 5px;
-    /* Reduce side padding to compress table */
 }
 
 /* Marker Orange */
@@ -1443,23 +1441,20 @@ thead th:nth-child(4) {
 /* Comparison Table Distortion Fix & Gap Removal */
 .highlight-pop-th {
     box-shadow: none !important;
-    /* User requested removing shadow */
     z-index: 10;
     background: #FF6F00;
     color: #fff;
     border: none;
     border-radius: 12px 12px 0 0;
-    /* Move up visually MORE */
     position: relative;
     top: 0;
+    /* Unified shift up */
     transform: translateY(-40px);
-    /* Increased from -20px */
     padding-top: 55px;
-    /* Increased to balance content */
     padding-bottom: 20px;
-    /* Increased to connect with next cell */
-    /* Ensure no gap below */
-    margin-bottom: -30px;
+    /* Pull next cell up significantly to overlap */
+    margin-bottom: -50px;
+    /* Force overlap */
 }
 
 .highlight-pop-td {
@@ -1467,30 +1462,29 @@ thead th:nth-child(4) {
     border-left: 2px solid #FF6F00 !important;
     border-right: 2px solid #FF6F00 !important;
     border-top: none !important;
-    /* Ensure no top border */
     border-bottom: none !important;
-    /* Ensure no bottom border in middle */
     color: #FF6F00;
     font-size: 1.1rem;
     font-weight: bold;
     position: relative;
     z-index: 10;
     box-shadow: none;
-    /* Remove transform scale, use padding */
-    transform: translateY(-20px);
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: -10px;
-    /* Pull up */
+    /* Unified shift up match header */
+    transform: translateY(-40px);
+    /* Increase padding to fill any potential gap */
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* Pull up to connect with header/prev cell */
+    margin-top: -20px;
 }
 
 /* Last Row Bottom Border for Oubomaru */
 .comparison-table tr:last-child .highlight-pop-td {
     border-bottom: 2px solid #FF6F00 !important;
     border-radius: 0 0 12px 12px;
-    transform: translateY(-20px);
+    transform: translateY(-40px);
+    /* Match others */
     padding-bottom: 50px;
-    /* Increased from 30px */
 }
 
 
