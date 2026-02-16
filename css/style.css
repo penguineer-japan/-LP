@@ -1474,8 +1474,10 @@ thead th:nth-child(4) {
     position: absolute;
     top: -40px;
     bottom: 0;
-    left: -2px;
-    right: -2px;
+    left: -4px;
+    /* Expanded by 2px */
+    right: -4px;
+    /* Expanded by 2px */
     background: #FF6F00;
     border: 2px solid #FF6F00;
     /* Reverted to orange 2px to match body width exactly */
