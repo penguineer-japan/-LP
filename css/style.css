@@ -2116,15 +2116,39 @@ thead th {
         font-size: 1.4rem;
     }
 
-    /* Footer / CEO */
-    .ceo-flex {
-        flex-direction: column;
-        text-align: center;
+    /* CEO Section Mobile */
+    .ceo-text h2 {
+        font-size: 1.4rem !important;
+        text-align: left;
+        line-height: 1.5 !important;
     }
 
-    .ceo-img img {
-        width: 160px;
-        height: 160px;
+    .ceo-text p {
+        text-align: left;
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    .ceo-profile {
+        text-align: left;
+        margin-top: 15px;
+    }
+
+    /* Common Feature Box Mobile */
+    .common-feature-box {
+        padding: 15px !important;
+        margin: 20px auto !important;
+    }
+
+    .common-feature-box h3 {
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .common-feature-box i {
+        display: block;
+        margin: 0 auto 10px;
+        font-size: 1.5rem;
     }
 
     /* Problem Section */
